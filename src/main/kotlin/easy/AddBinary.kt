@@ -3,6 +3,7 @@ package easy
 import kotlin.IllegalArgumentException
 
 /**
+ * LeetCode №67 Easy
  * Given two binary strings a and b, return their sum as a binary string.
  * Constraints:
  *  1 <= a.length, b.length <= 104
@@ -11,15 +12,15 @@ import kotlin.IllegalArgumentException
  */
 
 fun main() {
-    val a = "11"
-    val b = "1"
+    val a = "111"
+    val b = "11"
     val sum = addBinary(a, b)
     println(sum)
 }
 
 fun addBinary(a: String, b: String): String {
     if (!validate(a) || !validate(b)) throw IllegalArgumentException()
-    var sb = ""
+    var result = ""
     var carry = 0
     var i = a.length - 1
     var j = b.length - 1
@@ -29,13 +30,13 @@ fun addBinary(a: String, b: String): String {
         val digitB = if (j >= 0) b[j] - '0' else 0
         val sum = digitA + digitB + carry
 
-        sb = "${sum % 2}$sb"
+        result = "${sum % 2}$result"
         carry = sum / 2
         i--
         j--
     }
 
-    return sb
+    return result
 }
 
 private fun validate(value: String): Boolean {
